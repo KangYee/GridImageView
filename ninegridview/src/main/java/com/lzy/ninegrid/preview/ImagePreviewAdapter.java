@@ -2,8 +2,8 @@ package com.lzy.ninegrid.preview;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.support.annotation.NonNull;
-import android.support.v4.view.PagerAdapter;
+import androidx.annotation.NonNull;
+import androidx.viewpager.widget.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +18,7 @@ import java.util.List;
 
 import uk.co.senab.photoview.PhotoView;
 import uk.co.senab.photoview.PhotoViewAttacher;
+
 
 /**
  * ================================================
@@ -105,7 +106,9 @@ public class ImagePreviewAdapter extends PagerAdapter implements PhotoViewAttach
         //先获取大图的缓存图片
         Bitmap cacheImage = NineGridView.getImageLoader().getCacheImage(imageInfo.bigImageUrl);
         //如果大图的缓存不存在,在获取小图的缓存
-        if (cacheImage == null) cacheImage = NineGridView.getImageLoader().getCacheImage(imageInfo.thumbnailUrl);
+        if (cacheImage == null) {
+            cacheImage = NineGridView.getImageLoader().getCacheImage(imageInfo.thumbnailUrl);
+        }
         //如果没有任何缓存,使用默认图片,否者使用缓存
         if (cacheImage == null) {
             imageView.setImageResource(R.drawable.ic_default_color);

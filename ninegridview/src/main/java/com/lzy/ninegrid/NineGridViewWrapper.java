@@ -6,18 +6,20 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
-import android.support.v4.view.ViewCompat;
+
+import androidx.appcompat.widget.AppCompatImageView;
+import androidx.core.view.ViewCompat;
 import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.widget.ImageView;
 
-public class NineGridViewWrapper extends ImageView {
+public class NineGridViewWrapper extends AppCompatImageView {
 
     private int moreNum = 0;              //显示更多的数量
     private int maskColor = 0x88000000;   //默认的遮盖颜色
-    private float textSize = 35;          //显示文字的大小单位sp
+    private float textSize = 18;          //显示文字的大小单位sp
     private int textColor = 0xFFFFFFFF;   //显示文字的颜色
 
     private TextPaint textPaint;              //文字的画笔
@@ -85,6 +87,7 @@ public class NineGridViewWrapper extends ImageView {
                     ViewCompat.postInvalidateOnAnimation(this);
                 }
                 break;
+            default:
         }
 
         return super.onTouchEvent(event);
